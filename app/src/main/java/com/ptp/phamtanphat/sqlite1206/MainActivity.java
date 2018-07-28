@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayoutManager gridLayoutManager = new LinearLayoutManager(MainActivity.this);
         recyclerView.setLayoutManager(gridLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        //Tao ra diver cho cac item
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
+       
         recyclerView.setAdapter(nhahangAdapter);
         Cursor cursor = sqLitedatabase.GetData("SELECT * FROM Nhahang");
         while (cursor.moveToNext()){
